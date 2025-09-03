@@ -1,8 +1,6 @@
-let BASE = "https://fsa-crud-2aa9294fe819.herokuapp.com/api";
-
-let COHORT = "/2507";
-let RESOURCE = "/events";
-let API = BASE + COHORT;
+let API = "https://fsa-crud-2aa9294fe819.herokuapp.com/api/2507/events";
+let API_RSVPS = "https://fsa-crud-2aa9294fe819.herokuapp.com/api/2507/rsvps";
+let API_GUESTS = "https://fsa-crud-2aa9294fe819.herokuapp.com/api/2507/guests";
 
 // STATE //
 let selectedParty;
@@ -14,7 +12,7 @@ let guests = [];
 
 async function getParties() {
   try {
-    let response = await fetch(API + "/events/");
+    let response = await fetch(API);
     let result = await response.json();
     parties = result.data;
     render();
@@ -27,7 +25,7 @@ async function getParties() {
 
 async function getParty(id) {
   try {
-    let response = await fetch(API + "/events/" + id); //whatever.com/events/7
+    let response = await fetch(`${API}/${id}`); //whatever.com/events/7
     let result = await response.json();
     selectedParty = result.data;
     render();
@@ -40,7 +38,7 @@ async function getParty(id) {
 
 async function getRSVPs() {
   try {
-    let response = await fetch(API + "/rsvps");
+    let response = await fetch(API);
     let result = await response.json();
     rsvps = result.data;
     render();
@@ -53,7 +51,7 @@ async function getRSVPs() {
 
 async function getGuests() {
   try {
-    let response = await fetch(API + "/guests");
+    let response = await fetch(API);
     let result = await response.json();
     guests = result.data;
     render();
